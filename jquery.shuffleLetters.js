@@ -61,6 +61,9 @@
 				else if(/[A-Z]/.test(ch)){
 					types[i] = "upperLetter";
 				}
+				else if(/[0-9]/.test(ch)){
+					types[i] = "number";
+				}
 				else {
 					types[i] = "symbol";
 				}
@@ -123,14 +126,19 @@
 	function randomChar(type){
 		var pool = "";
 		
-		if (type == "lowerLetter"){
-			pool = "abcdefghijklmnopqrstuvwxyz0123456789";
-		}
-		else if (type == "upperLetter"){
-			pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		}
-		else if (type == "symbol"){
-			pool = ",.?/\\(^)![]{}*&^%$#'\"";
+		switch(type){
+			case 'lowerLetter':
+				pool = "abcdefghijklmnopqrstuvwxyz0123456789";
+				break;
+			case 'upperLetter':
+				pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+				break;
+			case 'number':
+				pool = "0123456789";
+				break;
+			case 'symbol':
+				pool = ",.?/\\(^)![]{}*&^%$#'\"";
+				break;
 		}
 		
 		var arr = pool.split('');
